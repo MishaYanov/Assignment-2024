@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Domain} from "../publishers-container.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import { IDomain } from '../../../models';
 
 @Component({
   selector: 'app-domain-card',
@@ -11,9 +11,9 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './domain-card.component.css'
 })
 export class DomainCardComponent {
-  @Input() domain!: Domain;
+  @Input() domain!: IDomain;
   isEdit: boolean = false;
-  _domain!: Domain;
+  _domain!: IDomain;
 
   constructor() {
   }

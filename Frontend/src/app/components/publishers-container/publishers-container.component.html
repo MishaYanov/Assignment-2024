@@ -1,6 +1,16 @@
 <div class="publishers-container">
     <div>
-      <button (click)="addPublisher()">Add publisher</button>
+      <button class="main-button" (click)="toggleAddNewPublisher()">{{ isPublisherToAddVisible ? 'Close' : 'Add New Publisher' }}</button>
+      <button class="main-button" (click)="toggleAddNewDomain()">{{ isDomainToAddVisible? 'Close' : 'Add Domain'}}</button>
+
+      <app-new-publisher-form  *ngIf="isPublisherToAddVisible" (addPublisher)="addPublisher($event)"></app-new-publisher-form>
+
+      <div *ngIf="isDomainToAddVisible">
+        <select [(ngModel)]="selectedPublisher" name="publisherSelect" id="publisherSelect">
+          <option *ngFor="let publisher of data" [value]="publisher.publisher">{{ publisher.publisher }}</option>
+        </select>
+        <app-new-domain-form   (addDomain)="addDomain($event, selectedPublisher)"></app-new-domain-form>
+      </div>
     </div>
     <div>
       <app-publisher-card *ngFor="let publisher of data" [publisher]="publisher"></app-publisher-card>

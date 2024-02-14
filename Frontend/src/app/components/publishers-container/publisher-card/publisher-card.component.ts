@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Publisher} from "../publishers-container.component";
 import {DomainCardComponent} from "../domain-card/domain-card.component";
 import {CommonModule} from "@angular/common";
+import { IPublisher } from '../../../models';
 
 @Component({
   selector: 'app-publisher-card',
@@ -14,7 +14,7 @@ import {CommonModule} from "@angular/common";
   styleUrl: './publisher-card.component.css'
 })
 export class PublisherCardComponent {
-  @Input() publisher!: Publisher;
+  @Input() publisher!: IPublisher;
 
   constructor() {
   }
