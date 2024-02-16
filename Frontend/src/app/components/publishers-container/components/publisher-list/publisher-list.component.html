@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <div class="actions">
+            <button (click)="toggleNewPublisherForm()">Add New Publisher</button>
+        </div>
+        <div class="from-wrapper" *ngIf="isNewPublisherFormVisible">
+            <app-new-publisher-form></app-new-publisher-form>
+        </div>
+        <div class="publishers" *ngFor="let publisher of data">
+            <div class="publisher__info" 
+                 [class.selected]="currentSelectedPublisher?.id === publisher.id"
+                 (click)="selectPublisher(publisher)">
+               {{publisher.name}}
+            </div>
+        </div>
+    </div>
+</div>

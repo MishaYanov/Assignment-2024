@@ -1,0 +1,14 @@
+<div class="domains-wrapper" >
+
+  <div class="domain-container" *ngIf="selectedPublisher">
+    <div class="actions">
+      <button (click)="toggleDomainAdditionForm()">Add new Domain to {{selectedPublisher.name}}</button>
+      <div *ngIf="isNewDomainFormVisible">
+        <app-new-domain-form [publisher]="selectedPublisher"></app-new-domain-form>
+    </div>
+    <div *ngFor="let domain of AllDomains | filterDomainsByPublishers:selectedPublisher?.id">
+        <app-domain-card [domain]="domain"></app-domain-card>
+    </div>
+  </div>
+</div>
+

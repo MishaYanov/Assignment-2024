@@ -1,0 +1,15 @@
+version: latest
+services:
+  dev-db:
+    image: postgres:latest
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: browsi-admin
+      POSTGRES_PASSWORD: secure-password
+      POSTGRES_DB: browsi-db
+    networks:
+      - browsi-net
+networks:
+  browsi-net:
+    
