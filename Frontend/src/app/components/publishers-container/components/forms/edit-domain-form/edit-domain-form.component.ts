@@ -3,8 +3,8 @@ import { IDomain, IPublisher } from '../../../models';
 import { SharedPublishersService } from '../../../shared/shared-publishers.service';
 import { SharedDomainsService } from '../../../shared/shared-domains.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DomainExistsInCurrentState } from '../../validations/DomainExistsInCurrentState';
-import { verifyDomainNameIntegrityValidator } from '../../validations/verifyDomainNameIntegrityValidator';
+import { DomainExistsInCurrentState } from '../../../validations/DomainExistsInCurrentState';
+import { verifyDomainNameIntegrityValidator } from '../../../validations/verifyDomainNameIntegrityValidator';
 import { CommonModule } from '@angular/common';
 
 @Component({

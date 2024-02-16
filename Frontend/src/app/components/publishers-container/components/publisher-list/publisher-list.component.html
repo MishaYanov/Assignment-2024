@@ -1,17 +1,25 @@
+<div class="logo-container">
+    <img src="assets/logo.svg" alt="logo" />
+</div>
 <div class="publishers-container">
-    <div>
-        <div class="actions">
-            <button class="primary"(click)="toggleNewPublisherForm()">Add New Publisher</button>
+    <div class="publishers-container__header">
+        <h2>Publishers</h2>
+    </div>
+    <div class="publisher-flex-wrapper">
+        <div class="publishers">
+            <div  *ngFor="let publisher of data">
+                <div class="publisher__info" 
+                     [class.selected]="currentSelectedPublisher?.id === publisher.id"
+                     (click)="selectPublisher(publisher)">
+                   {{publisher.name}}
+                </div>
+            </div>
         </div>
         <div class="from-wrapper" @fadeInOut *ngIf="isNewPublisherFormVisible">
             <app-new-publisher-form></app-new-publisher-form>
         </div>
-        <div class="publishers" *ngFor="let publisher of data">
-            <div class="publisher__info" 
-                 [class.selected]="currentSelectedPublisher?.id === publisher.id"
-                 (click)="selectPublisher(publisher)">
-               {{publisher.name}}
-            </div>
+        <div class="actions">
+            <button class="secondary dashboard-btn" (click)="toggleNewPublisherForm()">Add New Publisher</button>
         </div>
     </div>
 </div>

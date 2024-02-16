@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IDomain, INewDomain, IPublisher } from '../../../models';
 import { SharedDomainsService } from '../../../shared/shared-domains.service';
-import { DomainExistsInCurrentState } from '../../validations/DomainExistsInCurrentState';
+import { DomainExistsInCurrentState } from '../../../validations/DomainExistsInCurrentState';
 import { CommonModule } from '@angular/common';
-import { verifyDomainNameIntegrityValidator } from '../../validations/verifyDomainNameIntegrityValidator';
+import { verifyDomainNameIntegrityValidator } from '../../../validations/verifyDomainNameIntegrityValidator';
 
 @Component({
   selector: 'app-new-domain-form',

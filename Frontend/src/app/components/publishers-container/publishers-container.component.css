@@ -1,8 +1,9 @@
-
-.publishers-container {
-  color: var(--text-color);
-}
+.publishers-container{
+    width: 100%;
+    margin-top: 3%;
+    height: calc(100vh - 3%);
+}   
 .publisher-dashboard{
-  display: flex;
-  gap:10px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 }

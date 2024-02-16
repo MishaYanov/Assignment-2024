@@ -1,5 +1,5 @@
 import { AbstractControl, ValidatorFn } from "@angular/forms";
-import { IDomain } from "../../models";
+import { IDomain } from "../models";
 
 
 

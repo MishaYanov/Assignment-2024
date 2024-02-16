@@ -1,8 +1,8 @@
-<form [formGroup]="publisherForm" (ngSubmit)="onSubmit()">
+<form class="new-publisher" [formGroup]="publisherForm" (ngSubmit)="onSubmit()">
     <input formControlName="name" placeholder="Publisher Name" aria-placeholder="new publisher name"/>
     <div *ngIf="publisherForm.get('name')?.errors && publisherForm.get('name')?.touched">
-        <p *ngIf="publisherForm.get('name')?.errors?.['required']">Publisher name is required.</p>
-        <p *ngIf="publisherForm.get('name')?.errors?.['minlength']">Publisher name must be at least 1 character long.</p>
+        <p class="error-input" *ngIf="publisherForm.get('name')?.errors?.['required']">Publisher name is required.</p>
+        <p class="error-input" *ngIf="publisherForm.get('name')?.errors?.['minlength']">Publisher name must be at least 1 character long.</p>
     </div>
     <button type="submit">Add Publisher</button>
 </form>

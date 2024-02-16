@@ -4,8 +4,11 @@
   --primary-color-very-light: #eefef1;
   --secondary-color: #ff802b;
   --secondary-color-light: #ffc4a6;
-
+  --light-gray: #f9f9f9;
+  --medium-gray: #ccc;
+  --dark-gray: #515a5e;
   --text-color: #345666;
+  --error-color: #ff4d4d;
 }
 
 body {
@@ -26,13 +29,13 @@ body {
   display: none;
 }
 
-.actions {
+/* .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   height: 60px;
-}
+} */
 
 button {
   background-color: var(--secondary-color);
@@ -65,7 +68,13 @@ button:active {
 input {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
   width: 80%;
-  margin-bottom: 20px;
+}
+
+.error-input{
+  color: var(--error-color);
+  margin-top: 1px;
+  margin-bottom: 1px;
+  font-size: 0.8rem;
 }

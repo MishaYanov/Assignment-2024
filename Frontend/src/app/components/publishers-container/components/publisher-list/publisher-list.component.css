@@ -1,43 +1,68 @@
 .publishers-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 5px solid var(--primary-color);
-    height: 70vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background-color: var(--primary-color-very-light);
+    padding: 15px;
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    height: 80vh;
 }
 
-
-.publishers{
-    width:25vw;
+.publishers-container__header{
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+.publisher-flex-wrapper{
+    padding-top: 5px;
     display: flex;
     flex-direction: column;
-}
-
-.publisher__info{
-    padding: 10px;
-    border: 1px solid #ccc;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-  
+    margin-bottom: 20px;
+    height: 70vh;
 }
+
+.publishers{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 50vh;
+    border-bottom: 1px solid var(--secondary-color);
+    width: 100%;
+}
+.publisher__info{
+    margin-left: 10%;
+    min-height: 2rem;
+    width: 100%;
+    color: var(--secondary-color-light);
+    overflow-y: scroll;
+    cursor: pointer;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.selected{
+    color: var(--secondary-color);
+
+}
+
+.actions{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
 .from-wrapper{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    margin: 20px 0;
-    background-color: var(--primary-color);
-    padding: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 60px;
+    gap: 10px;
 }
 
-.publisher__info.selected {
-    background-color: #007bff; /* Example: Blue background */
-    color: white; /* White text */
-    cursor: pointer; /* Indicates the item is clickable */
-  }
-  
-  
+.dashboard-btn{
+    width: 160px;
+    height: 2rem;
+   font-size: 12px;
+}

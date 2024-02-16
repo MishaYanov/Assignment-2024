@@ -5,11 +5,12 @@ import { FilterDomainsByPublishersPipe } from '../../pipes/filter-domains-by-pub
 import { CommonModule } from '@angular/common';
 import { NewDomainFormComponent } from '../forms/new-domain-form/new-domain-form.component';
 import { DomainCardComponent } from './domain-card/domain-card.component';
+import { FilterDomainAndCountPipe } from '../../pipes/filter-domain-and-count.pipe';
 
 @Component({
   selector: 'app-publisher-domains',
   standalone: true,
-  imports: [FilterDomainsByPublishersPipe, CommonModule, NewDomainFormComponent, DomainCardComponent],
+  imports: [FilterDomainsByPublishersPipe, CommonModule, NewDomainFormComponent, DomainCardComponent, FilterDomainAndCountPipe],
   templateUrl: './publisher-domains.component.html',
   styleUrl: './publisher-domains.component.css',
 })

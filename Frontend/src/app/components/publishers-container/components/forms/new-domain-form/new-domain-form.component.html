@@ -1,22 +1,22 @@
 <form class="domain-form" [formGroup]="DomainForm" (ngSubmit)="onSubmit()">
     <input formControlName="domain" placeholder="Domain Name (domain.TLD/ subdomain.domain.TLD)" />
     <div *ngIf="DomainForm.get('domain')?.touched && DomainForm.get('domain')?.errors">
-        <p *ngIf="DomainForm.get('domain')?.errors?.['required']">Domain name is required.</p>
-        <p *ngIf="DomainForm.get('domain')?.errors?.['minlength']">Domain name must be at least 1 character long.</p>
-        <p *ngIf="DomainForm.get('domain')?.errors?.['DomainExistsInCurrentState']">This domain already exists</p>
-        <p *ngIf="DomainForm.get('domain')?.errors?.['invalidDomain']">The domain is not written in the correct syntax (domain.TLD/ subdomain.domain.TLD)</p>
+        <p class="error-input" *ngIf="DomainForm.get('domain')?.errors?.['required']">Domain name is required.</p>
+        <p class="error-input" *ngIf="DomainForm.get('domain')?.errors?.['minlength']">Domain name must be at least 1 character long.</p>
+        <p class="error-input" *ngIf="DomainForm.get('domain')?.errors?.['DomainExistsInCurrentState']">This domain already exists</p>
+        <p class="error-input" *ngIf="DomainForm.get('domain')?.errors?.['invalidDomain']">The domain is not written in the correct syntax (domain.TLD/ subdomain.domain.TLD)</p>
     </div>
 
     <input type="number" formControlName="desktopAds" placeholder="Desktop Ads" />
     <div *ngIf="DomainForm.get('desktopAds')?.touched && DomainForm.get('desktopAds')?.errors">
-`       <p *ngIf="DomainForm.get('desktopAds')?.errors?.['required']">Desktop Ads is required.</p>
-        <p *ngIf="DomainForm.get('desktopAds')?.errors?.['min']">Should be 0 or bigger</p>
+        <p class="error-input" *ngIf="DomainForm.get('desktopAds')?.errors?.['required']">Desktop Ads is required.</p>
+        <p class="error-input" *ngIf="DomainForm.get('desktopAds')?.errors?.['min']">Should be 0 or bigger</p>
     </div>
 
     <input type="number" formControlName="mobileAds" placeholder="Mobile Ads" />
     <div *ngIf="DomainForm.get('mobileAds')?.touched && DomainForm.get('mobileAds')?.errors">
-        <p *ngIf="DomainForm.get('mobileAds')?.errors?.['required']">Mobile Ads is required.</p>
-        <p *ngIf="DomainForm.get('mobileAds')?.errors?.['min']">Should be 0 or bigger</p>
+        <p class="error-input" *ngIf="DomainForm.get('mobileAds')?.errors?.['required']">Mobile Ads is required.</p>
+        <p class="error-input" *ngIf="DomainForm.get('mobileAds')?.errors?.['min']">Should be 0 or bigger</p>
     </div>
     
     <button type="submit">Add New Domain</button>

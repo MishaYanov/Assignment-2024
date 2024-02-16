@@ -1,14 +1,35 @@
-<div class="domains-wrapper" >
-
-  <div class="domain-container" *ngIf="selectedPublisher">
-    <div class="actions">
-      <button (click)="toggleDomainAdditionForm()">Add new Domain to {{selectedPublisher.name}}</button>
-      <div *ngIf="isNewDomainFormVisible">
-        <app-new-domain-form [publisher]="selectedPublisher"></app-new-domain-form>
-    </div>
-    <div *ngFor="let domain of AllDomains | filterDomainsByPublishers:selectedPublisher?.id">
-        <app-domain-card [domain]="domain"></app-domain-card>
+<div class="domain-wrapper">
+  <div class="spacer"></div>
+  <div class="domain-header">
+    <h2>Publisher <span class="highlight-secondary">{{selectedPublisher?.name}}</span></h2>
+    <div class="domain-main">
+      <div class="main-info-point" *ngIf="selectedPublisher">
+        Number of Domains: <span class="highlight-primary">{{AllDomains | filterDomainAndCount:selectedPublisher?.id }}</span>
+      </div>
+      <div class="main-info" *ngIf="selectedPublisher" >
+        Publisher Created At: <span class="highlight-primary">{{selectedPublisher?.createdAt | date}}</span>
+      </div>
+      <div class="" *ngIf="!selectedPublisher">
+        Please pick a publisher to view its domains
+      </div>
     </div>
   </div>
-</div>
+  <div class="domain-container" *ngIf="selectedPublisher">
+    <div class="domain-actions">
+      <button class="add-domain-button" (click)="toggleDomainAdditionForm()">  {{ isNewDomainFormVisible ? 'Close' : ('Add new Domain to ' + (selectedPublisher?.name || 'Publisher')) }}
+      </button>
+    </div>
+    <div class="domain-info" > 
+      <div class="domain-card-container" *ngIf="!isNewDomainFormVisible">
+        <div *ngFor="let domain of AllDomains | filterDomainsByPublishers:selectedPublisher?.id" >
+          <app-domain-card [domain]="domain"></app-domain-card>
+        </div>
+      </div>
+      <div *ngIf="isNewDomainFormVisible" class="domains-view">
+        <app-new-domain-form [publisher]="selectedPublisher"></app-new-domain-form>
+      </div>
+    </div>
 
+  </div>
+
+</div>
