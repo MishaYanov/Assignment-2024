@@ -5,6 +5,7 @@ import { SharedDomainsService } from '../../../shared/shared-domains.service';
 import { DomainExistsInCurrentState } from '../../../validations/DomainExistsInCurrentState';
 import { CommonModule } from '@angular/common';
 import { verifyDomainNameIntegrityValidator } from '../../../validations/verifyDomainNameIntegrityValidator';
+import { SharedPublishersService } from '../../../shared/shared-publishers.service';
 
 @Component({
   selector: 'app-new-domain-form',
@@ -19,12 +20,12 @@ export class NewDomainFormComponent {
 
   DomainForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private sharedDomainsService: SharedDomainsService) {
+  constructor(private fb: FormBuilder, private sharedDomainsService: SharedDomainsService, private sharedPublisherService: SharedPublishersService) {
     this.DomainForm = this.fb.group({
       domain: new FormControl(null, [
         Validators.required,
         Validators.minLength(1),
-        DomainExistsInCurrentState(this.sharedDomainsService.domains),
+        DomainExistsInCurrentState(this.sharedDomainsService.domains, this.sharedPublisherService.publishers),
         verifyDomainNameIntegrityValidator()
       ]),
       desktopAds: new FormControl(null, [

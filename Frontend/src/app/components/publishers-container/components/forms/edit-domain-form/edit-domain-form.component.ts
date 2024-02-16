@@ -19,13 +19,14 @@ export class EditDomainFormComponent {
   @Input() domain: IDomain | null = null;
 
   DomainForm: FormGroup;
+
   
   constructor(private sharedPublisherService: SharedPublishersService, private sharedDomainsService: SharedDomainsService, private fb: FormBuilder,) 
   {
     this.DomainForm = this.fb.group({
       domain: new FormControl(this.domain?.domain, [
         Validators.minLength(1),
-        DomainExistsInCurrentState(this.sharedDomainsService.domains),
+        DomainExistsInCurrentState(this.sharedDomainsService.domains, this.sharedPublisherService.publishers),
         verifyDomainNameIntegrityValidator()
       ]),
       desktopAds: new FormControl(this.domain?.desktopAds, [
@@ -38,6 +39,7 @@ export class EditDomainFormComponent {
   }
 
   checkWhichValueIsUpdated(domain: IDomain, updatedDomain: IDomain): IDomain | Boolean {
+    
     let newDomain: IDomain = domain;
     if((domain.domain === updatedDomain.domain && domain.desktopAds === updatedDomain.desktopAds && domain.mobileAds === updatedDomain.mobileAds)) {
       return false;
