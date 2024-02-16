@@ -1,9 +1,9 @@
-<div>
+<div class="publishers-container">
     <div>
         <div class="actions">
-            <button (click)="toggleNewPublisherForm()">Add New Publisher</button>
+            <button class="primary"(click)="toggleNewPublisherForm()">Add New Publisher</button>
         </div>
-        <div class="from-wrapper" *ngIf="isNewPublisherFormVisible">
+        <div class="from-wrapper" @fadeInOut *ngIf="isNewPublisherFormVisible">
             <app-new-publisher-form></app-new-publisher-form>
         </div>
         <div class="publishers" *ngFor="let publisher of data">
