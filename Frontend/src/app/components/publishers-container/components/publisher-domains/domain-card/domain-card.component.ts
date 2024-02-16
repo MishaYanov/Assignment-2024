@@ -21,7 +21,6 @@ export class DomainCardComponent {
 
   deleteDomain(): void {
     if (this.domain) {
-      debugger;
       this.sharedDomainService.deleteDomain(this.domain.id);
     }
   }

@@ -60,7 +60,6 @@ export class EditDomainFormComponent {
 
   onSubmit() {
     if (this.DomainForm.valid) {
-      debugger
       const updatedDomain: IDomain | Boolean = this.checkWhichValueIsUpdated(this.domain!, this.DomainForm.value);
       if (updatedDomain === false) {
         //no changes were made

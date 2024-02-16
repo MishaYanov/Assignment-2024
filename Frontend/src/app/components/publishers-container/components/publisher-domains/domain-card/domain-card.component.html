@@ -17,7 +17,7 @@
     </div>
     <div class="domain-actions" *ngIf="!isDeleteVerificationVisible">
         <div class="domain-button-container">
-            <button (click)="toggleDomainForm()">Edit Domain</button>
+            <button (click)="toggleDomainForm()">{{!isDomainFormVisible ? "Edit Domain" : "Close" }}</button>
             <button (click)="toggleDeleteVerification()">Delete Domain</button>
         </div>
     </div>

@@ -110,7 +110,6 @@ export class PublishersContainerComponent implements OnInit {
     this.domainService.addDomain(newDomain).subscribe({
       next: (domain: any) => {
         if(domain.id) {
-          debugger
           this.onDataLoaded();
           //success message
         }

@@ -49,4 +49,6 @@
     background-color: var(--secondary-color);
     color: white;
     cursor: pointer;
+    font-size: 10px;
+    width: 100px;
 }
