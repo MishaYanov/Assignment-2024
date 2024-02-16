@@ -21,7 +21,7 @@
 
 2. next use docker to run my container: to init the container you can you the script `npm run db:dev:up` this will use the compose file to build the Postgres database
 
-3. to migrate generate and migrate the tables and the initial data from prisma run the next command `prisma:dev:deploy`
+3. to migrate generate and migrate the tables and the initial data from prisma run the next commands `npx prisma generate` and `prisma:dev:deploy`
 
 4. finally start the backend   `npm run start:dev`
 ---
