@@ -6,8 +6,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "dev:install": "echo DATABASE_URL=\"postgresql://browsi-admin:secure-password@localhost:5434/browsi-db?schema=public\" > .env && npm i && npm run prisma:dev:generate && npm run db:dev:up && npm run prisma:dev:deploy",
+    "dev:install:windows": "echo DATABASE_URL=\"postgresql://browsi-admin:secure-password@localhost:5434/browsi-db?schema=public\" > .env && npm i && npm run prisma:dev:generate && npm run db:dev:up && timeout /t 2 >null && npm run prisma:dev:deploy",
+    "dev:install:Unix": "echo DATABASE_URL=\"postgresql://browsi-admin:secure-password@localhost:5434/browsi-db?schema=public\" > .env && npm i && npm run prisma:dev:generate && npm run db:dev:up && sleep 2 && npm run prisma:dev:deploy",
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:up": "docker compose up dev-db -d",
+    "prisma:dev:generate": "npx prisma generate",
     "prisma:dev:deploy": "npx prisma migrate deploy",
     "db:dev:restart:windows": "npm run db:dev:rm && npm run db:dev:up && timeout /t 2 >null && npm run prisma:dev:deploy",
     "db:dev:restart:Unix": "npm run db:dev:rm && npm run db:dev:up && sleep 2 && npm run prisma:dev:deploy",

@@ -9,12 +9,24 @@
 
 ### How to Run it
 ---
-#### Frontend
+### Frontend
 `npm i`
 
 `ng serve` or `npm run start`
 
-#### Backend
+### Backend
+#### Option 1:
+Please run the command 
+``` npm run dev:install ``` 
+this command will create the .env, install the packages, generate the prisma artifacts, build the docker container and migrate the prisma db into the database.
+after that you can just start the backend with ```npm run start:dev```
+
+* on slower computers the migrate can start before the container is up so you can try run it with timeout option pick the command related to your OS.
+```npm run dev:install:windows```
+```npm run dev:install:Unix```
+
+#### Option 2:
+
 1. first create a .env file and copy the next database url, this is for prisma to connect to the URL
 
 `DATABASE_URL="postgresql://browsi-admin:secure-password@localhost:5434/browsi-db?schema=public"`
@@ -26,7 +38,7 @@
 4. finally start the backend   `npm run start:dev`
 ---
 
-#### In the initial code were the edit view had errors:
+#### In the initial code there were errors in the edit:
 1. both of the ad amount values were pointing on the same reference in the object
 ```
 <div> Mobile Ads:</div>
