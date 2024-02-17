@@ -6,6 +6,17 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { DomainExistsInCurrentState } from '../../../validations/DomainExistsInCurrentState';
 import { verifyDomainNameIntegrityValidator } from '../../../validations/verifyDomainNameIntegrityValidator';
 import { CommonModule } from '@angular/common';
+import { invokeNotification } from '../../../../reuseables/notifications';
+
+/**
+ * 
+ * EditDomainFormComponent
+ * 
+ * This component is responsible for displaying the edit domain form.
+ * it handles the verifications of the domain inputs and the update of the domain.
+ * 
+ */
+
 
 @Component({
   selector: 'app-edit-domain-form',
@@ -61,11 +72,15 @@ export class EditDomainFormComponent {
   }
 
   onSubmit() {
+    if(!this.DomainForm.touched){
+      invokeNotification('info', 'Please fill the form before submitting');
+      return;
+    }
     if (this.DomainForm.valid) {
       const updatedDomain: IDomain | Boolean = this.checkWhichValueIsUpdated(this.domain!, this.DomainForm.value);
       if (updatedDomain === false) {
         //no changes were made
-        alert('No changes were made');
+        invokeNotification('warning', 'No changes were made, stopping the update');
         return;
       } else{
         this.sharedDomainsService.updateDomain(updatedDomain as IDomain);

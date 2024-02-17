@@ -9,6 +9,16 @@ import { IDomain, INewDomain, INewPublisher, IPublisher } from './models';
 import { SharedDomainsService } from './shared/shared-domains.service';
 import { PublisherDomainsComponent } from './components/publisher-domains/publisher-domains.component';
 import { Subscription } from 'rxjs';
+import { notify } from 'easy-notify-vanilla';
+import { invokeNotification } from '../reuseables/notifications';
+
+/**
+ * PublishersContainerComponent
+ * This is the main component for the publishers view. It is responsible for loading the publishers and domains data and passing it to the child components.
+ * I decided to make all the requests to the server in this component and pass the data to the child components as it is the main view and it is responsible for the data.
+ * This way I bundle all the requests in one place and I can easily manage the data and the state of the view.
+ * 
+ */
 
 @Component({
   selector: 'app-publishers-container',
@@ -41,7 +51,7 @@ export class PublishersContainerComponent implements OnInit {
     this.getDomains();
   }
 
-  // Subscriptions to events for publishers and domains
+  // Subscriptions to events for publishers 
   subscribeToPublisherEvents(): void {
     this.subscriptions.add(this.sharedPublishers.publisherAdded$.subscribe(
       (newPublisher: INewPublisher) => {
@@ -50,6 +60,7 @@ export class PublishersContainerComponent implements OnInit {
     ));
   };
 
+  // Subscriptions to events for domains
   subscribeToDomainEvents(): void {
     this.subscriptions.add(this.sharedDomains.domainAdded$.subscribe(
       (newDomain: INewDomain) => {
@@ -70,6 +81,7 @@ export class PublishersContainerComponent implements OnInit {
     ));
   };
 
+  // the following methods are used to get the publishers and domains data from the server and update the shared services
   getPublishers(): void {
     const publishersObservable = this.publisherService.getAllPublishers();
     publishersObservable.subscribe((publishers: IPublisher[]) => {
@@ -92,14 +104,14 @@ export class PublishersContainerComponent implements OnInit {
       next: (publisher:any) => {
         if(publisher.id) {
           this.onDataLoaded();
-          //success message
+          invokeNotification('success', 'Publisher added successfully');
         }
         // Update the publishers list, make a new request to get the updated list as it may have changed by other users
         this.getPublishers();
       },
       error: (error) => {
         this.onDataLoaded();
-          //error message
+        invokeNotification('error', 'Failed to add new publisher: ' + error.error.message);
         console.error('Failed to add new publisher', error);
       }
     });
@@ -111,14 +123,14 @@ export class PublishersContainerComponent implements OnInit {
       next: (domain: any) => {
         if(domain.id) {
           this.onDataLoaded();
-          //success message
+          invokeNotification('success', 'Domain added successfully');
         }
         // Update the domains list, make a new request to get the updated list as it may have changed by other users
         this.getDomains();
       },
       error: (error) => {
         this.onDataLoaded();
-          //error message
+        invokeNotification('error', 'Failed to add new domain');
         console.error('Failed to add new domain', error);
       }
     });
@@ -130,14 +142,14 @@ export class PublishersContainerComponent implements OnInit {
       next: (domain: any) => {
         if(domain.id) {
           this.onDataLoaded();
-          //success message
+          invokeNotification('success', 'Domain updated successfully');
         }
         // Update the domains list, make a new request to get the updated list as it may have changed by other users
         this.getDomains();
       },
       error: (error) => {
         this.onDataLoaded();
-          //error message
+        invokeNotification('error', 'Failed to update domain');
         console.error('Failed to update domain', error);
       }
     });
@@ -149,21 +161,21 @@ export class PublishersContainerComponent implements OnInit {
       next: (domain: any) => {
         if(domain.id) {
           this.onDataLoaded();
-          //success message
+          invokeNotification('success', 'Domain deleted successfully');
         }
         // Update the domains list, make a new request to get the updated list as it may have changed by other users
         this.getDomains();
       },
       error: (error) => {
         this.onDataLoaded();
-          //error message
+        invokeNotification('error', 'Failed to delete domain');
         console.error('Failed to delete domain', error);
       }
     });
   };
   
   
-  
+  // the following methods are used to handle the loading state of the view
   onDataLoading(): void {
     this.isLoading = true;
   }
@@ -172,7 +184,13 @@ export class PublishersContainerComponent implements OnInit {
     this.isLoading = false;
   }
 
+  // this method is used to handle the event when a publisher is selected from the list
   onPublisherSelected(publisher: IPublisher): void {
     this.selectedPublisher = publisher;
+  }
+
+  // cleanup subscriptions
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

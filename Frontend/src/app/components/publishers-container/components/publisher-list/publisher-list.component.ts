@@ -39,6 +39,8 @@ export class PublisherListComponent implements OnInit {
     });
   }
 
+  // This function is used to select a publisher from the list and emit it to the parent component
+  // also handles the UI and the CSS for the selected publisher
   public selectPublisher(publisher: IPublisher): void {
     this.currentSelectedPublisher = publisher;
     this.publisherSelected.emit(publisher);

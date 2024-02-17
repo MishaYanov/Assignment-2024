@@ -12,7 +12,6 @@ export class PublisherController {
   public async createPublisher(
     @Body(new NewPublisherValidationPipe()) dto: INewPublisherDto,
   ) {
-    console.log('dto', dto);
     //while it is best practice to use class validators I decided to use my own validation.
     return this.publisherService.createPublisher(dto);
   }

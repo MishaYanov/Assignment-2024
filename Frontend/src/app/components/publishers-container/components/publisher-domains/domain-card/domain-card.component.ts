@@ -4,6 +4,15 @@ import { SharedDomainsService } from '../../../shared/shared-domains.service';
 import { EditDomainFormComponent } from '../../forms/edit-domain-form/edit-domain-form.component';
 import { CommonModule } from '@angular/common';
 
+/**
+ * DomainCardComponent
+ * 
+ * This component is responsible for displaying the domain card.
+ * it handles delete, edit and display of the domain card.
+ * 
+ * 
+ */
+
 @Component({
   selector: 'app-domain-card',
   standalone: true,

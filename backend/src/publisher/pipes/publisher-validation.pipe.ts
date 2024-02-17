@@ -10,7 +10,6 @@ import { INewPublisherDto } from '../dto';
 @Injectable()
 export class NewPublisherValidationPipe implements PipeTransform {
   transform(value: INewPublisherDto) {
-    console.log('value', value);
     if (!value.name || typeof value.name !== 'string') {
       throw new BadRequestException('Validation failed: name is required and must be a string');
     }

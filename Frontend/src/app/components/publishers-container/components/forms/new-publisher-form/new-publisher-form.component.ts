@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { INewPublisher, IPublisher } from '../../../models';
 import { CommonModule } from '@angular/common';
 import { SharedPublishersService } from '../../../shared/shared-publishers.service';
+import { invokeNotification } from '../../../../reuseables/notifications';
 
 @Component({
   selector: 'app-new-publisher-form',
@@ -26,6 +27,10 @@ export class NewPublisherFormComponent {
 
   //this function uses global sharedPublishersService to add a new publisher in order to reduce code duplication and decouple the components
   onSubmit() {
+    if(!this.publisherForm.touched){
+      invokeNotification('info', 'Please fill the form before submitting');
+      return;
+    }
     if (this.publisherForm.valid) {
       const publisher: INewPublisher = {
         name: this.publisherForm.value.name

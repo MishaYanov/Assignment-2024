@@ -48,7 +48,6 @@ export class DomainService {
                     },
                 },
             });
-            console.log('existingDomain', existingDomain);
             if (existingDomain) {
                 throw new ForbiddenException('Domain already exists with a different ID.');
             }

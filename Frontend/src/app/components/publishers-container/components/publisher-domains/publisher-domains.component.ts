@@ -7,6 +7,16 @@ import { NewDomainFormComponent } from '../forms/new-domain-form/new-domain-form
 import { DomainCardComponent } from './domain-card/domain-card.component';
 import { FilterDomainAndCountPipe } from '../../pipes/filter-domain-and-count.pipe';
 
+/**
+ * 
+ * PublisherDomainsComponent
+ * 
+ * This component is responsible for displaying the domains of the selected publisher.
+ * In this assignment I decide to to make an additional http to get domains by publisher id and filter them in the front end.
+ * As the verifications are done both on the front end and the back end, I decided to go with this approach to reduce the load on the server. 
+ * 
+ */
+
 @Component({
   selector: 'app-publisher-domains',
   standalone: true,

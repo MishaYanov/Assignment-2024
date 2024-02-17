@@ -6,7 +6,6 @@ import { verifyDomainNameIntegrity } from "../helpers/verifyDomainNameIntegrity"
 @Injectable()
 export class UpdateDomainValidationPipe {
     transform(value: IDomainDto) {
-        console.log('value', value);
         if(value.domain === undefined || typeof value.domain !== 'string') {
             throw new BadRequestException('Validation failed: domain is required and must be a string')
         }

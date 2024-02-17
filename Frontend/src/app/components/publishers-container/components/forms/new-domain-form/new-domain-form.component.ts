@@ -6,7 +6,15 @@ import { DomainExistsInCurrentState } from '../../../validations/DomainExistsInC
 import { CommonModule } from '@angular/common';
 import { verifyDomainNameIntegrityValidator } from '../../../validations/verifyDomainNameIntegrityValidator';
 import { SharedPublishersService } from '../../../shared/shared-publishers.service';
+import { invokeNotification } from '../../../../reuseables/notifications';
 
+/**
+ * 
+ * NewDomainFormComponent
+ * 
+ * This component is responsible for displaying the new domain form.
+ * it handles the verifications of the domain inputs and the addition of the domain.
+ */
 @Component({
   selector: 'app-new-domain-form',
   standalone: true,
@@ -40,9 +48,14 @@ export class NewDomainFormComponent {
   }
 
   onSubmit() {
+    if(!this.DomainForm.touched){
+      invokeNotification('info', 'Please fill the form before submitting');
+      return;
+    }
     if (this.DomainForm.valid) {
       //edge case where publisher is null
       if(this.publisher === null) {
+        invokeNotification('error', 'Publisher is gone :( refresh the page and try again.');
         throw new Error('Publisher is null');
       }
       const domain: INewDomain = {

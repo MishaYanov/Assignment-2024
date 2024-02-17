@@ -18,7 +18,6 @@ export class DomainController {
     public async createDomain(
         @Body(new NewDomainValidationPipe()) dto: INewDomainDto,
     ) {
-        console.log('dto', dto);
         //had to build my own validation pipe for the domain.
         return this.publisherService.createDomain(dto);
     }
@@ -27,7 +26,6 @@ export class DomainController {
     public async updateDomain(
         @Body(new UpdateDomainValidationPipe()) dto: IDomainDto,
     ) {
-        console.log('dto', dto);
         //while it is best practice to use class validators I decided to use my own validation.
         return this.publisherService.updateDomain(dto);
     }

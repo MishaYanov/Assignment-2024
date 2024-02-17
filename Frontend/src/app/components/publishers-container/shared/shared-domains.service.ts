@@ -3,6 +3,14 @@ import { IDomain, INewDomain } from '../models';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Subject } from 'rxjs';
 
+/**
+ * SharedDomainsService
+ * 
+ * This service is responsible for handling the domains data and events.
+ * It is used to share the domains data between the components and to handle the events related to the domains.
+ * 
+ */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,11 +40,11 @@ export class SharedDomainsService {
   }
 
   set domains(domains: IDomain[]) {
-    console.log('Setting domains', domains);
     this._domains = domains;
     this.domains$.next(this._domains);
   }
 
+  // this method is left here as this is an alternative way to get the domain for additional config that is not needed in this project
   public getDomainById(id: number): IDomain {
     return this._domains.find(domain => domain.id === id) as IDomain;
   }
