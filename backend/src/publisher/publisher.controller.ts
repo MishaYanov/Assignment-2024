@@ -3,6 +3,9 @@ import { PublisherService } from './publisher.service';
 import { INewPublisherDto } from './dto';
 import { NewPublisherValidationPipe } from './pipes/publisher-validation.pipe';
 
+/**
+ * This controller is for handling all the incoming requests for the publisher resource.
+ */
 @Controller('publishers')
 export class PublisherController {
   constructor(private publisherService: PublisherService) {}

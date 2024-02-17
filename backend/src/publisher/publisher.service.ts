@@ -3,6 +3,15 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { INewPublisherDto, IPublisherDto } from './dto';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
+/**
+ * This service is used to interact with the Publisher table in the database.
+ * It contains methods for creating a new publisher and getting all publishers.
+ * 
+ * @param prisma This is the PrismaService instance that is used to interact with the database.
+ * 
+ * @returns The methods in this service return the data from the database.
+ */
+
 @Injectable()
 export class PublisherService {
   constructor(private prisma: PrismaService) {}

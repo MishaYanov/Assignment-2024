@@ -4,6 +4,10 @@ import { IDomainDto, INewDomainDto } from './dto';
 import { NewDomainValidationPipe, UpdateDomainValidationPipe } from './pipes';
 import { verifyIdIntegrity } from './helpers/verifyIdIntegrity';
 
+/**
+ * This controller is for handling all the incoming requests for the domain resource.
+ * 
+ */
 @Controller('domains')
 export class DomainController {
     constructor(private publisherService: DomainService) {}

@@ -2,7 +2,11 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { IDomainDto } from "../dto";
 import { verifyDomainNameIntegrity } from "../helpers/verifyDomainNameIntegrity";
 
-
+/**
+ * This pipe is used to validate the incoming request body for the updateDomain method in the DomainService.
+ * this check validates the incoming request body to ensure that it has a domain, desktopAds, mobileAds, id, and publisherId properties.
+ * 
+ */
 @Injectable()
 export class UpdateDomainValidationPipe {
     transform(value: IDomainDto) {

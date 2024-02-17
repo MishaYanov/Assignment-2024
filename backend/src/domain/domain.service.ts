@@ -3,6 +3,14 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { IDomainDto, INewDomainDto } from './dto';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
+
+/**
+ * This service is used to interact with the Domain table in the database.
+ * 
+ * @param prisma This is the PrismaService instance that is used to interact with the database.
+ * 
+ * @returns The methods in this service return the data from the database.
+ */
 @Injectable()
 export class DomainService {
 
